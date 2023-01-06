@@ -11,6 +11,8 @@ let score = 0;
 let maxScore = 0;
 let coins = 0;
 
+//===========================================================
+
 function scoreOut() {
    idScore.innerText = `Счет: ${score}`
    idCoins.innerText = `Монеты: ${coins}`
@@ -53,6 +55,8 @@ function getRandom(min, max) {
    return Math.random() * (max - min) + min;
 }
 
+//===========================================================
+
 let rect = {
    x: 0,
    y: 400,
@@ -70,10 +74,13 @@ let ball = {
    color: 'blue'
 }
 
+//===========================================================
 
 c.addEventListener('mousemove', function (event) {
    rect.x = event.offsetX - 64;
 })
+
+//===========================================================
 
 function render() {
    ctx.clearRect(0, 0, c.width, c.height)
@@ -130,10 +137,10 @@ function render() {
    }
 
 
+   //===========================================================
 
-
-   // skin1 = new Image();
-   // skin1.src = 'img/skin1.jpg';
+   skin1 = new Image();
+   skin1.src = 'img/skin1.jpg';
 
    skin2 = new Image();
    skin2.src = 'img/skin2.jpg';
@@ -142,60 +149,28 @@ function render() {
    skin3.src = 'img/skin3.jpg';
 
 
+   // skin2.onload = function () {
+
+   //    let pattern = ctx.createPattern(img, 'repeat')
+   //    console.log('12')
+   //    ctx.fillStyle = pattern;
+   //    ctx.fillRect(0, 0, 1000, 500);
+   //    ctx.strokeRect(0, 0, 1000, 500)
+   // }
+
+   skin2.onload = function () {
+      ctx.drawImage(skin2, 0, 0, 1000, 600);
+   }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-   ctx.drawImage(skin2, 0, 0, 1000, 600);
+   // ctx.drawImage(skin1, 0, -50, 1000, 600);
+   // ctx.drawImage(skin2, 0, 0, 1000, 600);
    // ctx.drawImage(skin3, 0, 0, 1000, 600);
 
-   // ==============================================
+   //===========================================================
 
-   // ==============================================
-
-
-
-   idShopBtn3.addEventListener('click', () => {
-
-   })
-
-   idShopBtn2.addEventListener('click', () => {
-      if (coins >= 0) {
-         coins -= 0;
-
-         idShopBtn2.innerText = 'Применить';
-
-         const idShopPrice2 = document.getElementById('listPrice2')
-         idShopPrice2.innerText = 'Приобретено';
-
-         const idlistViewPanel2 = document.getElementById('listViewPanel2')
-
-
-
-
-      }
-   })
-
-
-
-
-
-
-   // ==============================================
-
-   // ==============================================
    drawCircle(ball)
    drawRect(rect)
 
@@ -203,6 +178,7 @@ function render() {
 }
 
 window.requestAnimationFrame(render)
+
 
 // =========================================
 const idOpenShopBtn = document.getElementById('shop-btn')
@@ -220,12 +196,54 @@ idCloseShopBtn.addEventListener('click', () => {
 })
 
 
+// =========================================
+// Покупка скинов фона
 
 
+idShopBtn1.addEventListener('click', () => {
+   if (coins >= 0) {
+      coins -= 0;
 
+      idShopBtn1.innerText = 'Применить';
 
+      const idShopPrice1 = document.getElementById('listPrice1')
+      idShopPrice1.innerText = 'Приобретено';
 
+      const idlistViewPanel1 = document.getElementById('listViewPanel1')
+      idlistViewPanel1.classList.add('opacity')
 
+   }
+})
+
+idShopBtn2.addEventListener('click', () => {
+   if (coins >= 0) {
+      coins -= 0;
+
+      idShopBtn2.innerText = 'Применить';
+
+      const idShopPrice2 = document.getElementById('listPrice2')
+      idShopPrice2.innerText = 'Приобретено';
+
+      const idlistViewPanel2 = document.getElementById('listViewPanel2')
+      idlistViewPanel2.classList.add('opacity')
+
+   }
+})
+
+idShopBtn3.addEventListener('click', () => {
+   if (coins >= 0) {
+      coins -= 0;
+
+      idShopBtn3.innerText = 'Применить';
+
+      const idShopPrice3 = document.getElementById('listPrice3')
+      idShopPrice3.innerText = 'Приобретено';
+
+      const idlistViewPanel3 = document.getElementById('listViewPanel3')
+      idlistViewPanel3.classList.add('opacity')
+
+   }
+})
 
 
 
