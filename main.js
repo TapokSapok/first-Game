@@ -93,8 +93,8 @@ function render() {
 
       ball.x = getRandom(100, 1000);
       ball.y = 100;
-      ball.dx = getRandom(6, 20);
-      ball.dx = getRandom(6, 20);
+      ball.dx = getRandom(6, 12);
+      ball.dx = getRandom(6, 12);
 
       score = 0;
       scoreOut();
