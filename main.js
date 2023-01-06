@@ -158,16 +158,16 @@ function render() {
    //    ctx.strokeRect(0, 0, 1000, 500)
    // }
 
-   skin2.onload = function () {
-      ctx.drawImage(skin2, 0, 0, 1000, 600);
-   }
+   // skin2.onload = function () {
+   //    ctx.drawImage(skin2, 0, 0, 1000, 600);
+   // }
 
 
 
 
    // ctx.drawImage(skin1, 0, -50, 1000, 600);
    // ctx.drawImage(skin2, 0, 0, 1000, 600);
-   // ctx.drawImage(skin3, 0, 0, 1000, 600);
+   ctx.drawImage(skin3, 0, 0, 1000, 600);
 
    //===========================================================
 
