@@ -2,12 +2,18 @@ const c = document.getElementById('canvas');
 const ctx = canvas.getContext('2d')
 const idScore = document.getElementById('score')
 const idMaxScore = document.getElementById('max-score')
+const idCoins = document.getElementById('coins')
+
+
+
 
 let score = 0;
 let maxScore = 0;
+let coins = 0;
 
 function scoreOut() {
    idScore.innerText = `Счет: ${score}`
+   idCoins.innerText = `Монеты: ${coins}`
    if (maxScore < score) {
       maxScore = score
       idMaxScore.innerText = `Максимальный счет: ${maxScore}`
@@ -64,6 +70,7 @@ let ball = {
    color: 'blue'
 }
 
+
 c.addEventListener('mousemove', function (event) {
    rect.x = event.offsetX - 64;
 })
@@ -84,10 +91,10 @@ function render() {
          rect.color = 'black'
       }, 300);
 
-      ball.x = getRandom(100, 500);
+      ball.x = getRandom(100, 1000);
       ball.y = 100;
-      ball.dx = getRandom(6, 12);
-      ball.dx = getRandom(6, 12);
+      ball.dx = getRandom(6, 20);
+      ball.dx = getRandom(6, 20);
 
       score = 0;
       scoreOut();
@@ -95,6 +102,7 @@ function render() {
 
    if (ball.y - ball.radius <= 0) {
       score++;
+      coins++
       scoreOut();
 
       ball.color = 'orange'
@@ -121,7 +129,73 @@ function render() {
       rect.x = 0
    }
 
-   // Отрисовка
+
+
+
+   // skin1 = new Image();
+   // skin1.src = 'img/skin1.jpg';
+
+   skin2 = new Image();
+   skin2.src = 'img/skin2.jpg';
+
+   skin3 = new Image();
+   skin3.src = 'img/skin3.jpg';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ctx.drawImage(skin2, 0, 0, 1000, 600);
+   // ctx.drawImage(skin3, 0, 0, 1000, 600);
+
+   // ==============================================
+
+   // ==============================================
+
+
+
+   idShopBtn3.addEventListener('click', () => {
+
+   })
+
+   idShopBtn2.addEventListener('click', () => {
+      if (coins >= 0) {
+         coins -= 0;
+
+         idShopBtn2.innerText = 'Применить';
+
+         const idShopPrice2 = document.getElementById('listPrice2')
+         idShopPrice2.innerText = 'Приобретено';
+
+         const idlistViewPanel2 = document.getElementById('listViewPanel2')
+
+
+
+
+      }
+   })
+
+
+
+
+
+
+   // ==============================================
+
+   // ==============================================
    drawCircle(ball)
    drawRect(rect)
 
@@ -129,3 +203,53 @@ function render() {
 }
 
 window.requestAnimationFrame(render)
+
+// =========================================
+const idOpenShopBtn = document.getElementById('shop-btn')
+const idCloseShopBtn = document.getElementById('shopExitBtn')
+const idShopBtn1 = document.getElementById('shopBtn-1')
+const idShopBtn2 = document.getElementById('shopBtn-2')
+const idShopBtn3 = document.getElementById('shopBtn-3')
+
+idOpenShopBtn.addEventListener('click', () => {
+   window.scrollTo(0, 1000);
+})
+
+idCloseShopBtn.addEventListener('click', () => {
+   window.scrollTo(0, 0);
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// =========================================
+
+
+
+
+
+
+
+
+
+

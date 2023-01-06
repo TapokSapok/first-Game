@@ -5,6 +5,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/font-awesome.min.css">
    <link rel="stylesheet" href="style.css">
    <title>GAME</title>
 </head>
@@ -13,6 +14,44 @@
    <div id="score">Счет: 0</div>
    <canvas id="canvas" width="1000" height="500"></canvas>
    <div id="max-score">Максимальный счет: 0</div>
+   <div id="coins">Монеты: 0</div>
+   <div id="shop-btn">
+      <i class="fa fa-plus-square-o fa-4x" aria-hidden="true"></i>
+   </div>
+   <div id="shopPanel">
+      <div id="shopExitBtn"></div>
+      <div id="shopTitle">Магазин скинов</div>
+      <div id="list">
+         <div class="listItem">
+            <div class="listItemTitle">Панславия</div>
+            <div class="ViewPanel" id="listViewPanel1">
+               <img src="" class="shopViewImg">
+            </div>
+            <div class="listPrice" id="listPrice1">Цена: 1000</div>
+            <button type="submit" class="listBtn" id="shopBtn-1">Купить</button>
+         </div>
+         <div class="listItem">
+            <div class="listItemTitle">Космос</div>
+            <div class="ViewPanel" id="listViewPanel2">
+               <img src="img/skin2.jpg" class="shopViewImg">
+            </div>
+            <div class="listPrice" id="listPrice2">Цена: 500</div>
+            <button type="submit" class="listBtn" id="shopBtn-2">Купить</button>
+         </div>
+         <div class="listItem">
+            <div class="listItemTitle">Небо</div>
+            <div class="ViewPanel" id="listViewPanel3">
+               <img src="img/skin3.jpg" class="shopViewImg">
+            </div>
+            <div class="listPrice" id="listPrice3">Цена: 700</div>
+            <button type="submit" class="listBtn" id="shopBtn-3">Купить</button>
+         </div>
+      </div>
+   </div>
+   <div class="space"></div>
+
+
+
    <script src="main.js"></script>
 </body>
 
