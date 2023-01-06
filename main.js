@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d')
 const idScore = document.getElementById('score')
 const idMaxScore = document.getElementById('max-score')
 const idCoins = document.getElementById('coins')
-
+const idShopCoins = document.getElementById('shopCoins')
 
 
 
@@ -11,11 +11,17 @@ let score = 0;
 let maxScore = 0;
 let coins = 0;
 
+let skinEnable1 = false;
+let skinEnable2 = false;
+let skinEnable3 = false;
+
 //===========================================================
 
 function scoreOut() {
    idScore.innerText = `Счет: ${score}`
    idCoins.innerText = `Монеты: ${coins}`
+   idShopCoins.innerText = `Монеты: ${coins}`
+
    if (maxScore < score) {
       maxScore = score
       idMaxScore.innerText = `Максимальный счет: ${maxScore}`
@@ -139,6 +145,10 @@ function render() {
 
    //===========================================================
 
+
+
+
+
    skin1 = new Image();
    skin1.src = 'img/skin1.jpg';
 
@@ -149,25 +159,17 @@ function render() {
    skin3.src = 'img/skin3.jpg';
 
 
-   // skin2.onload = function () {
-
-   //    let pattern = ctx.createPattern(img, 'repeat')
-   //    console.log('12')
-   //    ctx.fillStyle = pattern;
-   //    ctx.fillRect(0, 0, 1000, 500);
-   //    ctx.strokeRect(0, 0, 1000, 500)
-   // }
-
-   // skin2.onload = function () {
-   //    ctx.drawImage(skin2, 0, 0, 1000, 600);
-   // }
 
 
-
-
-   // ctx.drawImage(skin1, 0, -50, 1000, 600);
-   // ctx.drawImage(skin2, 0, 0, 1000, 600);
-   ctx.drawImage(skin3, 0, 0, 1000, 600);
+   if (skinEnable1) {
+      ctx.drawImage(skin1, 0, -50, 1000, 600);
+   }
+   if (skinEnable2) {
+      ctx.drawImage(skin2, 0, 0, 1000, 600);
+   }
+   if (skinEnable3) {
+      ctx.drawImage(skin3, 0, 0, 1000, 600);
+   }
 
    //===========================================================
 
@@ -189,6 +191,7 @@ const idShopBtn3 = document.getElementById('shopBtn-3')
 
 idOpenShopBtn.addEventListener('click', () => {
    window.scrollTo(0, 1000);
+   scoreOut()
 })
 
 idCloseShopBtn.addEventListener('click', () => {
@@ -198,49 +201,113 @@ idCloseShopBtn.addEventListener('click', () => {
 
 // =========================================
 // Покупка скинов фона
+const idShopPrice1 = document.getElementById('listPrice1')
+const idlistViewPanel1 = document.getElementById('listViewPanel1')
+const idShopPrice2 = document.getElementById('listPrice2')
+const idlistViewPanel2 = document.getElementById('listViewPanel2')
+const idShopPrice3 = document.getElementById('listPrice3')
+const idlistViewPanel3 = document.getElementById('listViewPanel3')
+
+let itemSkin1 = false;
+let itemSkin2 = false;
+let itemSkin3 = false;
 
 
 idShopBtn1.addEventListener('click', () => {
-   if (coins >= 0) {
-      coins -= 0;
+   if (coins >= 1000) {
+      if (itemSkin1) {
+         if (!skinEnable1) {
+            skinEnable2 = false;
+            skinEnable3 = false;
+            skinEnable1 = true;
+         }
+         return;
+      }
+
+      coins -= 1000;
+      itemSkin1 = true;
 
       idShopBtn1.innerText = 'Применить';
-
-      const idShopPrice1 = document.getElementById('listPrice1')
       idShopPrice1.innerText = 'Приобретено';
-
-      const idlistViewPanel1 = document.getElementById('listViewPanel1')
       idlistViewPanel1.classList.add('opacity')
+      scoreOut()
+
+   } else {
+
+      if (itemSkin1) { return; }
+
+      idShopPrice1.innerText = 'Недостаточно монет :(';
+      idShopBtn1.innerText = 'Ошибка';
+
+      setTimeout(() => {
+         idShopPrice1.innerText = 'Цена: 1000';
+         idShopBtn1.innerText = 'Купить';
+      }, 800);
 
    }
 })
 
 idShopBtn2.addEventListener('click', () => {
-   if (coins >= 0) {
-      coins -= 0;
+   if (coins >= 500) {
+      if (itemSkin2) {
+         if (!skinEnable2) {
+            skinEnable1 = false;
+            skinEnable3 = false;
+            skinEnable2 = true;
+         }
+         return;
+      }
+
+      coins -= 500;
+      itemSkin2 = true;
 
       idShopBtn2.innerText = 'Применить';
-
-      const idShopPrice2 = document.getElementById('listPrice2')
       idShopPrice2.innerText = 'Приобретено';
-
-      const idlistViewPanel2 = document.getElementById('listViewPanel2')
       idlistViewPanel2.classList.add('opacity')
+      scoreOut()
+
+   } else {
+      if (itemSkin2) { return; }
+
+      idShopPrice2.innerText = 'Недостаточно монет :(';
+      idShopBtn2.innerText = 'Ошибка';
+
+      setTimeout(() => {
+         idShopPrice2.innerText = 'Цена: 500';
+         idShopBtn2.innerText = 'Купить';
+      }, 800);
 
    }
 })
 
 idShopBtn3.addEventListener('click', () => {
-   if (coins >= 0) {
-      coins -= 0;
+   if (coins >= 700) {
+      if (itemSkin3) {
+         if (!skinEnable3) {
+            skinEnable2 = false;
+            skinEnable1 = false;
+            skinEnable3 = true;
+         }
+         return;
+      }
+      coins -= 700;
+      itemSkin3 = true;
 
       idShopBtn3.innerText = 'Применить';
-
-      const idShopPrice3 = document.getElementById('listPrice3')
       idShopPrice3.innerText = 'Приобретено';
-
-      const idlistViewPanel3 = document.getElementById('listViewPanel3')
       idlistViewPanel3.classList.add('opacity')
+      scoreOut()
+
+   } else {
+      if (itemSkin3) { return; }
+
+      idShopPrice3.innerText = 'Недостаточно монет :(';
+      idShopBtn3.innerText = 'Ошибка';
+
+      setTimeout(() => {
+         idShopPrice3.innerText = 'Цена: 700';
+         idShopBtn3.innerText = 'Купить';
+      }, 800);
 
    }
 })
