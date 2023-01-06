@@ -104,10 +104,11 @@ function render() {
          rect.color = 'black'
       }, 300);
 
-      ball.x = getRandom(100, 1000);
+      ball.x = getRandom(30, 1000);
       ball.y = 100;
-      ball.dx = getRandom(6, 12);
-      ball.dx = getRandom(6, 12);
+
+      ball.dx = 10;
+      ball.dy = 15;
 
       score = 0;
       scoreOut();
